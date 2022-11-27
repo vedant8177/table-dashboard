@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <th class="thead">id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Remove</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{ id }}</td>
+                <td>{{ first_name }}</td>
+                <td>{{ last_name }}</td>
+                <td>{{ email }}</td>
+                <td>{{ password }}</td>
+                <form action="/delete" method="post">
+                    <td>
+                        <input type="hidden" name="id" value="{{ id }}">
+                        <button type="submit" class="button is-danger is-light">Delete</button>
+                    </td>
+                </form>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <form class="yo" action="/dashboard" method="post">
+    <div class="field">
+        <label class="firstName">First Name</label>
+        <div class="control">
+            <input class="input" name="firstName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="lastName">Last Name</label>
+        <div class="control">
+            <input class="input" name="lastName" type="text">
+        </div>
+    </div>
+    <div class="field">
+        <label class="email">Email</label>
+        <div class="control">
+            <input class="input" name="email" type="email">
+        </div>
+    </div>
+    <div class="field">
+        <label class="password">Password</label>
+        <div class="control">
+            <input class="input" name="password" type="password">
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-info is-light" type="submit">Add</button>
+        </div>
+    </div>
+    </form>
+</body>
+
+</html>
